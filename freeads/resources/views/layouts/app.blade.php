@@ -46,6 +46,14 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        {{-- {{ route('POSTS.SEARCH') }} --}}
+                        {{-- NEED TO CHANGE --}}
+                        <form action="{{ url('/posts') }}" method="GET" class="form-inline d-flex justify-content-center md-form form-sm mt-0">
+                            <div>
+                                <input type="search" name="search" id="search" class="form-control mr-2" placeholder="Search">
+                                <input type="submit" value="Submit" class="btn btn-danger mr-2">
+                            </div>
+                        </form>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -85,6 +93,7 @@
             </div>
         </nav>
         <main class="container py-4">
+            @include('inc.messages')
             @yield('content')
         </main>
         <div class="push"></div>

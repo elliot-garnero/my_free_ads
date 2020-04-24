@@ -18,7 +18,7 @@
         </div> --}}
         <div class="form-group">
             {{ Form::label('images', 'Image') }}
-            {{ Form::text('images', '',['class' => 'form-control']) }}
+            {{ Form::text('images', $post->images,['class' => 'form-control']) }}
         </div>
         
         <div class="form-group">

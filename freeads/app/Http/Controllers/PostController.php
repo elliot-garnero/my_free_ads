@@ -21,6 +21,28 @@ class PostController extends Controller
     }
 
     /**
+     * Search
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        // FInd a way to execute research
+        echo $request;
+        $query = Post::table('posts')->where('title', $request);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(2);
+        return view('posts.index')->with([
+            'posts' => $posts
+        ]);
+
+
+        $post = Post::find($id);
+        return view('posts.show')->with([
+            'post' => $post
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
