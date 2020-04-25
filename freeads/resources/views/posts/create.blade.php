@@ -8,8 +8,8 @@
             {{ Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title']) }}            
         </div>
         <div class="form-group">
-            {{ Form::label('body', 'Body') }}
-            {{ Form::textarea('body', '', ['class' => 'form-control', 'placeholder' => 'Description ...']) }}            
+            {{ Form::label('body', 'Description') }}
+            {{ Form::textarea('body', '', ['id' => 'ckeditor', 'class' => 'form-control', 'placeholder' => 'Description ...']) }}
         </div>
         <div class="form-group">
             {{ Form::label('images', 'Image') }}

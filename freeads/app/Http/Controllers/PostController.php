@@ -25,20 +25,22 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function search(Request $request)
+    public function search(/*Request $request*/)
     {
-        // FInd a way to execute research
-        echo $request;
-        $query = Post::table('posts')->where('title', $request);
-        $posts = Post::orderBy('created_at', 'desc')->paginate(2);
-        return view('posts.index')->with([
-            'posts' => $posts
+        return view('posts.search');
+    }
+
+    public function searchResult(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'priceMin' => 'required',
+            'priceMax' => 'required'
         ]);
 
-
-        $post = Post::find($id);
-        return view('posts.show')->with([
-            'post' => $post
+        $posts = Post::where('title', '=', $request['title'])->paginate(2);
+        return view('posts.searchResult')->with([
+            'posts' => $posts
         ]);
     }
 

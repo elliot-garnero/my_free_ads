@@ -12,7 +12,7 @@
                 </div>
                 <p>{{ $post->body }}</p>
                 {{-- <p>{{$post->images}} not working images</p> --}}
-                <img src="{{ $post->images }}" alt="issou" height="300" width="300">
+                <img src="{{ $post->images }}" alt="issou" height="30%" width="30%">
                 <small class="text-secondary">Written on {{ $post->created_at }}</small>
             </div>
         @endforeach

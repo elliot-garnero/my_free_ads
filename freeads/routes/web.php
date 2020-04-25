@@ -17,10 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::resource('posts', 'PostController')->middleware('verified');
-Route::resource('posts', 'PostController');
+Route::get('/posts/search', 'PostController@search');
+Route::get('/posts/searchResult', 'PostController@searchResult');
 
-Route::get('/posts', ('PostController@index'));
+Route::resource('posts', 'PostController');
+// Route::resource('posts', 'PostController')->middleware('verified');
+//Route::get('/posts', ('PostController@index'));
 
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
