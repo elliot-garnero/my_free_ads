@@ -8,7 +8,7 @@
             <div class="card border-dark mb-3 p-2">
                 <div class="d-flex justify-content-between mt-2">
                     <h3><a class="text-danger" href="/posts/{{ $post->id }}">{{ $post->title }}</a></h3>
-                    <h3 class="">{{ $post->price }} €</h3>
+                    <h3>{{ $post->price }} €</h3>
                 </div>
                 <p>{{ $post->body }}</p>
                 {{-- <p>{{$post->images}} not working images</p> --}}

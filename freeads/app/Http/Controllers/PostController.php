@@ -38,9 +38,15 @@ class PostController extends Controller
             'priceMax' => 'required'
         ]);
 
-        $posts = Post::where('title', '=', $request['title'])->paginate(2);
+        // $post = Post::search('title', 'like', $request['title'])->paginate(2);
+        // // dd($post);
+        // $post = Post::all();
+        // $post = Post::where('title', '=', $request["title"]);
+        $post = Post::where('title', 'LIKE', '%' . $request["title"] . '%')->get();
+        // ->orWhere('email', 'BETWEEN', "%{$searchTerm}%") 
         return view('posts.searchResult')->with([
-            'posts' => $posts
+            'posts' => $post,
+            'request' => $request
         ]);
     }
 
