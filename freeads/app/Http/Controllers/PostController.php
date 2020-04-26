@@ -33,17 +33,12 @@ class PostController extends Controller
     public function searchResult(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'priceMin' => 'required',
-            'priceMax' => 'required'
+            'title' => 'required'
         ]);
 
-        // $post = Post::search('title', 'like', $request['title'])->paginate(2);
-        // // dd($post);
-        // $post = Post::all();
-        // $post = Post::where('title', '=', $request["title"]);
-        $post = Post::where('title', 'LIKE', '%' . $request["title"] . '%')->get();
-        // ->orWhere('email', 'BETWEEN', "%{$searchTerm}%") 
+        $post = Post::where('title', 'LIKE', '%' . $request["title"] . '%')
+            ->whereBetween('price', [($request["priceMin"] ? $request["priceMin"] : '0'), ($request["priceMax"] ? $request["priceMax"] : '999999999')])
+            ->get();
         return view('posts.searchResult')->with([
             'posts' => $post,
             'request' => $request

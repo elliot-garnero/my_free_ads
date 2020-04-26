@@ -4,6 +4,11 @@
     <a href="/posts/search" class="btn btn-dark mt-4">Go back</a>
     <h3 class="mt-4">Your results for "{{$request["title"]}}" :</h3>
     @if (count($posts) > 0)
+        <select id="userfilter" name="userfilter" class="form-control col-2">
+            <option value="id">Sort by :</option>
+            <option value="">Price Ascending</option>
+            <option value="">Price Descending</option>
+        </select>
         @foreach ($posts as $post)
             <div class="border-bottom border-dark pb-3">
                 <div class="d-flex justify-content-between mt-4">
